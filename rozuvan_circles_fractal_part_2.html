@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Rozuvan Circles Fractal | Jupyter Notebook</title>
+<title>Rozuvan Circles Fractal [part 2] | Jupyter Notebook</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11718,7 +11718,7 @@ div#notebook {
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
-<!-- <link rel="stylesheet" href="custom.css"> -->
+<link rel="stylesheet" href="custom.css">
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
@@ -11744,7 +11744,7 @@ div#notebook {
     <!-- End of mathjax configuration --></head>
 <body>
 
-<a href="https://github.com/valera-rozuvan/rozuvan-jupyter-notebooks/blob/master/rozuvan_circles_fractal.html"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 100;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<a href="https://github.com/valera-rozuvan/rozuvan-jupyter-notebooks/blob/master/rozuvan_circles_fractal_part_2.html"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 100;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
@@ -11752,28 +11752,34 @@ div#notebook {
 
 <div class="modal-content">
   <div class="modal-header">
-    <h4 class="modal-title">Rozuvan Circles Fractal</h4>
+    <h4 class="modal-title">Rozuvan Circles Fractal [part 2]</h4>
   </div>
   <div class="modal-body">
     <div>
       <p>
-        I decided to use <a href="http://jupyter.org/">Jupyter Notebook</a> to
-        render a particular configuration of a generalized Mandelbrot set. The
-        resulting fractal image is unique - i.e. I have not seen such a fractal
-        before. I will be investigating whether this is trully something new, or
-        if this has been done before. For now though, I call this fractal the
-        <b>Rozuvan Circles Fractal</b> = )
+        This is an update to my first Jupyter Notebook
+        <a href="https://valera-rozuvan.github.io/rozuvan-jupyter-notebooks/rozuvan_circles_fractal.html">Rozuvan Circles Fractal</a>.
+        I updated the code so that it more clearly resembles the mathematical
+        formula. Also, I made it more easy to specify the center coordinates,
+        and the "zoom level".
+      </p>
+      <br />
+      <p>
+        Below are 3 renderings of a General Mandelbrot Set (GMS). Each
+        rendering is made from a unique set of parameters. The first is the
+        Rozuvan Circles Fractal (RCF), the second is an interesting
+        Mandelbrot-like fractal, and the last is the canonical original
+        Mandelbrot fractal.
       </p>
       <br />
       <p>
         Download
-        <a href="https://github.com/valera-rozuvan/rozuvan-jupyter-notebooks/blob/master/rozuvan_circles_fractal.ipynb">ipynb</a>
+        <a href="https://github.com/valera-rozuvan/rozuvan-jupyter-notebooks/blob/master/rozuvan_circles_fractal_part_2.ipynb">ipynb</a>
         file of this notebook.
       </p>
       <br />
       <p>
-        PS: More on the generalized Mandelbrot set later. Follow the discussion
-        along at FractalForums
+        PS: Follow the discussion about RCF and GMS at FractalForums
         <a href="http://www.fractalforums.com/other-types/rozuvan-circles-fractal/">thread</a>.
       </p>
     </div>
@@ -11843,7 +11849,11 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">fractal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">max_iters</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">fractal</span><span class="p">(</span>
+  <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+  <span class="n">max_iters</span><span class="p">,</span> <span class="n">bailout_dist</span><span class="p">,</span>
+  <span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a33</span><span class="p">,</span> <span class="n">a34</span><span class="p">,</span> <span class="n">a35</span><span class="p">,</span> <span class="n">a36</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span>
+<span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Given the real and imaginary parts of a complex number,</span>
 <span class="sd">    determine if it is a candidate for membership in the fractal</span>
@@ -11853,48 +11863,33 @@ div#notebook {
   <span class="n">cL</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 
   <span class="k">try</span><span class="p">:</span>
-    <span class="n">t2</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">cL</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
-  <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span>
+    <span class="n">w1</span> <span class="o">=</span> <span class="n">a11</span> <span class="o">*</span> <span class="n">cL</span> <span class="o">+</span> <span class="n">a12</span>
+  <span class="k">except</span> <span class="p">(</span><span class="ne">OverflowError</span><span class="p">,</span> <span class="ne">ZeroDivisionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">max_iters</span>
+
   <span class="k">try</span><span class="p">:</span>
-    <span class="n">t3</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="nb">complex</span><span class="p">(</span><span class="o">-</span><span class="mf">100.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">cL</span><span class="p">),</span> <span class="n">c</span><span class="p">)</span>
-  <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span>
+    <span class="n">w2</span> <span class="o">=</span> <span class="n">a21</span> <span class="o">*</span> <span class="n">cL</span> <span class="o">+</span> <span class="n">a22</span>
+  <span class="k">except</span> <span class="p">(</span><span class="ne">OverflowError</span><span class="p">,</span> <span class="ne">ZeroDivisionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">max_iters</span>
+
   <span class="k">try</span><span class="p">:</span>
-    <span class="n">t4</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">cL</span><span class="p">)</span>
-  <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span>
+    <span class="n">w3</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">a31</span> <span class="o">*</span> <span class="n">cL</span> <span class="o">+</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a33</span> <span class="o">*</span> <span class="n">c</span> <span class="o">+</span> <span class="n">a34</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">a35</span> <span class="o">*</span> <span class="n">cL</span> <span class="o">+</span> <span class="n">a36</span><span class="p">)</span> <span class="o">*</span> <span class="n">c</span>
+  <span class="k">except</span> <span class="p">(</span><span class="ne">OverflowError</span><span class="p">,</span> <span class="ne">ZeroDivisionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">max_iters</span>
+
   <span class="k">try</span><span class="p">:</span>
-    <span class="n">t5</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="o">-</span><span class="mf">200.0</span><span class="p">,</span> <span class="o">-</span><span class="n">cL</span><span class="p">)</span> <span class="o">*</span> <span class="n">c</span>
-  <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span>
+    <span class="n">w4</span> <span class="o">=</span> <span class="n">a41</span> <span class="o">*</span> <span class="n">cL</span> <span class="o">+</span> <span class="n">a42</span>
+  <span class="k">except</span> <span class="p">(</span><span class="ne">OverflowError</span><span class="p">,</span> <span class="ne">ZeroDivisionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">max_iters</span>
 
   <span class="n">z</span> <span class="o">=</span> <span class="mf">0.0j</span>
   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iters</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">t1</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">cL</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">z</span>
-    <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">max_iters</span>
+      <span class="n">z</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">w1</span> <span class="o">+</span> <span class="n">z</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span> <span class="o">+</span> <span class="n">w3</span><span class="p">,</span> <span class="n">w4</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">OverflowError</span><span class="p">,</span> <span class="ne">ZeroDivisionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">max_iters</span>
 
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">T1</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">max_iters</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">T2</span> <span class="o">=</span> <span class="n">T1</span> <span class="o">+</span> <span class="n">t3</span>
-    <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">max_iters</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">T3</span> <span class="o">=</span> <span class="n">T2</span> <span class="o">+</span> <span class="n">t5</span>
-    <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">max_iters</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">T4</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">T3</span><span class="p">,</span> <span class="n">t4</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">max_iters</span>
-
-    <span class="n">z</span> <span class="o">=</span> <span class="n">T4</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">real</span><span class="o">*</span><span class="n">z</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="o">*</span><span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">400000.0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">real</span><span class="o">*</span><span class="n">z</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="o">*</span><span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">bailout_dist</span><span class="p">:</span>
       <span class="k">return</span> <span class="n">i</span>
 
   <span class="k">return</span> <span class="n">max_iters</span>
@@ -11910,7 +11905,12 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">create_fractal</span><span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">iters</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">create_fractal</span><span class="p">(</span>
+  <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span>
+  <span class="n">image</span><span class="p">,</span>
+  <span class="n">iters</span><span class="p">,</span> <span class="n">bailout_dist</span><span class="p">,</span>
+  <span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a33</span><span class="p">,</span> <span class="n">a34</span><span class="p">,</span> <span class="n">a35</span><span class="p">,</span> <span class="n">a36</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span>
+<span class="p">):</span>
   <span class="n">height</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
   <span class="n">width</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
@@ -11922,12 +11922,16 @@ div#notebook {
     <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
       <span class="n">imag</span> <span class="o">=</span> <span class="n">min_y</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">pixel_size_y</span>
 
-      <span class="n">escape_num</span> <span class="o">=</span> <span class="n">fractal</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">,</span> <span class="n">iters</span><span class="p">)</span>
+      <span class="n">escape_num</span> <span class="o">=</span> <span class="n">fractal</span><span class="p">(</span>
+        <span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">,</span>
+        <span class="n">iters</span><span class="p">,</span> <span class="n">bailout_dist</span><span class="p">,</span>
+        <span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a33</span><span class="p">,</span> <span class="n">a34</span><span class="p">,</span> <span class="n">a35</span><span class="p">,</span> <span class="n">a36</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span>
+      <span class="p">)</span>
 
       <span class="k">if</span> <span class="p">(</span><span class="n">escape_num</span> <span class="o">==</span> <span class="n">iters</span><span class="p">):</span>
-        <span class="n">image</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
-      <span class="k">else</span><span class="p">:</span>
         <span class="n">image</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">image</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
 </pre></div>
 
 </div>
@@ -11940,13 +11944,51 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1080</span><span class="p">,</span> <span class="mi">1920</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="mf">1080.0</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">1920.0</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">centerX</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
+<span class="n">centerY</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">viewWidth</span> <span class="o">=</span> <span class="mf">449.82162780783005</span>
+<span class="n">viewHeight</span> <span class="o">=</span> <span class="n">viewWidth</span> <span class="o">*</span> <span class="p">(</span><span class="n">height</span> <span class="o">/</span> <span class="n">width</span><span class="p">)</span>
+
+<span class="n">min_x</span> <span class="o">=</span> <span class="n">centerX</span> <span class="o">-</span> <span class="n">viewWidth</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">max_x</span> <span class="o">=</span> <span class="n">centerX</span> <span class="o">+</span> <span class="n">viewWidth</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">min_y</span> <span class="o">=</span> <span class="n">centerY</span> <span class="o">-</span> <span class="n">viewHeight</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">max_y</span> <span class="o">=</span> <span class="n">centerY</span> <span class="o">+</span> <span class="n">viewHeight</span> <span class="o">*</span> <span class="mf">0.5</span>
+
+<span class="n">a11</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a12</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.0</span><span class="p">)</span>
+
+<span class="n">a21</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a22</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+
+<span class="n">a31</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">a32</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="o">-</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a33</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a34</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a35</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">a36</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="o">-</span><span class="mf">200.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">a41</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">a42</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">bailout_dist</span> <span class="o">=</span> <span class="mf">400000.0</span>
+
 <span class="n">start</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
-<span class="n">create_fractal</span><span class="p">(</span><span class="o">-</span><span class="mf">228.24</span><span class="p">,</span> <span class="mf">228.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">120.96</span><span class="p">,</span> <span class="mf">120.96</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">create_fractal</span><span class="p">(</span>
+  <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span>
+  <span class="n">image</span><span class="p">,</span>
+  <span class="n">max_iter</span><span class="p">,</span> <span class="n">bailout_dist</span><span class="p">,</span>
+  <span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a33</span><span class="p">,</span> <span class="n">a34</span><span class="p">,</span> <span class="n">a35</span><span class="p">,</span> <span class="n">a36</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span>
+<span class="p">)</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
 
 <span class="k">print</span> <span class="s2">&quot;Fractal generated in </span><span class="si">%f</span><span class="s2"> s&quot;</span> <span class="o">%</span> <span class="n">dt</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">228.24</span><span class="p">,</span> <span class="mf">228.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">120.96</span><span class="p">,</span> <span class="mf">120.96</span><span class="p">))</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">))</span>
 <span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -11960,7 +12002,7 @@ div#notebook {
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Fractal generated in 46.978858 s
+<pre>Fractal generated in 39.847765 s
 </pre>
 </div>
 </div>
@@ -11968,7 +12010,7 @@ div#notebook {
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre><a href="rozuvan_circles_fractal_01.png"><img src="rozuvan_circles_fractal_01.png" /></a>
+<pre><a href="rozuvan_circles_fractal_04.png"><img src="rozuvan_circles_fractal_04.png" /></a>
 </pre>
 </div>
 </div>
@@ -11983,13 +12025,51 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1080</span><span class="p">,</span> <span class="mi">1920</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="mf">1080.0</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">1920.0</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">centerX</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.055515619873081685</span>
+<span class="n">centerY</span> <span class="o">=</span> <span class="mf">0.00002206854513772745</span>
+<span class="n">viewWidth</span> <span class="o">=</span> <span class="mf">0.008159161006168078</span>
+<span class="n">viewHeight</span> <span class="o">=</span> <span class="n">viewWidth</span> <span class="o">*</span> <span class="p">(</span><span class="n">height</span> <span class="o">/</span> <span class="n">width</span><span class="p">)</span>
+
+<span class="n">min_x</span> <span class="o">=</span> <span class="n">centerX</span> <span class="o">-</span> <span class="n">viewWidth</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">max_x</span> <span class="o">=</span> <span class="n">centerX</span> <span class="o">+</span> <span class="n">viewWidth</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">min_y</span> <span class="o">=</span> <span class="n">centerY</span> <span class="o">-</span> <span class="n">viewHeight</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">max_y</span> <span class="o">=</span> <span class="n">centerY</span> <span class="o">+</span> <span class="n">viewHeight</span> <span class="o">*</span> <span class="mf">0.5</span>
+
+<span class="n">a11</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a12</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">a21</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a22</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">64.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">a31</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a32</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">128.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a33</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a34</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a35</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a36</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">32.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">a41</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a42</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">2.000001</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">)</span>
+
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">bailout_dist</span> <span class="o">=</span> <span class="mf">4000000000.0</span>
+
 <span class="n">start</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
-<span class="n">create_fractal</span><span class="p">(</span><span class="o">-</span><span class="mf">19.20</span><span class="p">,</span> <span class="mf">19.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.80</span><span class="p">,</span> <span class="mf">10.80</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">create_fractal</span><span class="p">(</span>
+  <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span>
+  <span class="n">image</span><span class="p">,</span>
+  <span class="n">max_iter</span><span class="p">,</span> <span class="n">bailout_dist</span><span class="p">,</span>
+  <span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a33</span><span class="p">,</span> <span class="n">a34</span><span class="p">,</span> <span class="n">a35</span><span class="p">,</span> <span class="n">a36</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span>
+<span class="p">)</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
 
 <span class="k">print</span> <span class="s2">&quot;Fractal generated in </span><span class="si">%f</span><span class="s2"> s&quot;</span> <span class="o">%</span> <span class="n">dt</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">19.20</span><span class="p">,</span> <span class="mf">19.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.80</span><span class="p">,</span> <span class="mf">10.80</span><span class="p">))</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">))</span>
 <span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -12003,17 +12083,19 @@ div#notebook {
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Fractal generated in 109.465202 s
+<pre>Fractal generated in 29.372203 s
 </pre>
 </div>
 </div>
 
+
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre><a href="rozuvan_circles_fractal_02.png"><img src="rozuvan_circles_fractal_02.png" /></a>
+<pre><a href="rozuvan_circles_fractal_05.png"><img src="rozuvan_circles_fractal_05.png" /></a>
 </pre>
 </div>
 </div>
+
 
 </div>
 </div>
@@ -12024,13 +12106,51 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1080</span><span class="p">,</span> <span class="mi">1920</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="mf">1080.0</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">1920.0</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">centerX</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
+<span class="n">centerY</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">viewWidth</span> <span class="o">=</span> <span class="mf">5.2</span>
+<span class="n">viewHeight</span> <span class="o">=</span> <span class="n">viewWidth</span> <span class="o">*</span> <span class="p">(</span><span class="n">height</span> <span class="o">/</span> <span class="n">width</span><span class="p">)</span>
+
+<span class="n">min_x</span> <span class="o">=</span> <span class="n">centerX</span> <span class="o">-</span> <span class="n">viewWidth</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">max_x</span> <span class="o">=</span> <span class="n">centerX</span> <span class="o">+</span> <span class="n">viewWidth</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">min_y</span> <span class="o">=</span> <span class="n">centerY</span> <span class="o">-</span> <span class="n">viewHeight</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">max_y</span> <span class="o">=</span> <span class="n">centerY</span> <span class="o">+</span> <span class="n">viewHeight</span> <span class="o">*</span> <span class="mf">0.5</span>
+
+<span class="n">a11</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a12</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">a21</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a22</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">a31</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a32</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a33</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a34</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a35</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a36</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">a41</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a42</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">bailout_dist</span> <span class="o">=</span> <span class="mf">400000.0</span>
+
 <span class="n">start</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
-<span class="n">create_fractal</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.0</span> <span class="o">+</span> <span class="mf">80.0</span> <span class="o">/</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">create_fractal</span><span class="p">(</span>
+  <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">,</span>
+  <span class="n">image</span><span class="p">,</span>
+  <span class="n">max_iter</span><span class="p">,</span> <span class="n">bailout_dist</span><span class="p">,</span>
+  <span class="n">a11</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">a21</span><span class="p">,</span> <span class="n">a22</span><span class="p">,</span> <span class="n">a31</span><span class="p">,</span> <span class="n">a32</span><span class="p">,</span> <span class="n">a33</span><span class="p">,</span> <span class="n">a34</span><span class="p">,</span> <span class="n">a35</span><span class="p">,</span> <span class="n">a36</span><span class="p">,</span> <span class="n">a41</span><span class="p">,</span> <span class="n">a42</span>
+<span class="p">)</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
 
 <span class="k">print</span> <span class="s2">&quot;Fractal generated in </span><span class="si">%f</span><span class="s2"> s&quot;</span> <span class="o">%</span> <span class="n">dt</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.0</span> <span class="o">+</span> <span class="mf">80.0</span> <span class="o">/</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">))</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span><span class="p">))</span>
 <span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -12044,17 +12164,19 @@ div#notebook {
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Fractal generated in 88.165300 s
+<pre>Fractal generated in 94.405396 s
 </pre>
 </div>
 </div>
 
+
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre><a href="rozuvan_circles_fractal_03.png"><img src="rozuvan_circles_fractal_03.png" /></a>
+<pre><a href="rozuvan_circles_fractal_06.png"><img src="rozuvan_circles_fractal_06.png" /></a>
 </pre>
 </div>
 </div>
+
 
 </div>
 </div>
@@ -12100,7 +12222,5 @@ object?   -&gt; Details about 'object', use 'object??' for extra details.
 
     </div>
   </div>
-
-
 </body>
 </html>
