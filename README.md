@@ -1,7 +1,4 @@
-# rozuvan-jupyter-notebooks
-Rozuvan Jupyter Notebooks
-
-## Notebooks
+# my-jupyter-notebooks
 
 These are static documents, hosted via GitHub pages.
 
