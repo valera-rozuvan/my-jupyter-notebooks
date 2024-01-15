@@ -9,6 +9,8 @@ These are static documents, hosted via GitHub pages.
 - [Rozuvan Circles Fractal](https://valera-rozuvan.github.io/rozuvan-jupyter-notebooks/rozuvan_circles_fractal.html)
 - [Rozuvan Circles Fractal [part 2]](https://valera-rozuvan.github.io/rozuvan-jupyter-notebooks/rozuvan_circles_fractal_part_2.html)
 
+NOTE: These live samples were created by first exporting as HTML and then crafting a bit the generated HTML file to suit my needs. Need to come up with an easier way to do an export to the web. Maybe nowadays this is easier?
+
 ---
 
 ## license
